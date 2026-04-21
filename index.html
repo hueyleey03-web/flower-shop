@@ -28,3 +28,103 @@ a{ color:#00ffcc; }
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>LOGIN</title>
+<style>
+body{
+  background:black;
+  color:#00ffcc;
+  font-family:monospace;
+  text-align:center;
+  margin-top:20 %;
+}
+input, button{
+  background:black;
+  color:#00ffcc;
+  border:1 px solid #00ffcc;
+}
+</style>
+</head>
+
+<body>
+
+<h2>ACCESS REQUIRED</h2>
+
+<input id="code" placeholder="Enter Code">
+<button onclick="check()">ENTER</button>
+
+<script>
+function check(){
+  let c = document.getElementById("code").value;
+  
+  if(c === "0312"){
+    window.location.href = "system.html";
+  }else{
+    alert("ACCESS DENIED");
+  }
+}
+</script>
+
+<!-- 提示藏这里：生日 -->
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>SYSTEM</title>
+<style>
+body{
+  background:black;
+  color:#00ffcc;
+  font-family:monospace;
+}
+a{ color:#00ffcc; }
+</style>
+</head>
+
+<body>
+
+<h2>WELCOME BACK</h2>
+
+<p>> open file?</p>
+
+<ul>
+<li><a href="file1.html">client_data.txt</a></li>
+<li><a href="file2.html">flower_log.txt</a></li>
+<li><a href="secret.html">???</a></li>
+</ul>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>???</title>
+<style>
+body{
+  background:black;
+  color:red;
+  font-family:monospace;
+  text-align:center;
+  margin-top:20%;
+}
+</style>
+</head>
+
+<body>
+
+<h2>you are not supposed to be here</h2>
+
+<p>她不是来买花的。</p>
+<p>她只是想被看见。</p>
+
+<br>
+<p>END</p>
+
+</body>
+</html>
