@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LOGIN</title>
+<style>
+body{
+  background:black;
+  color:#00ffcc;
+  font-family:monospace;
+  text-align:center;
+  margin-top:20%;
+}
+input, button{
+  background:black;
+  color:#00ffcc;
+  border:1px solid #00ffcc;
+}
+</style>
+</head>
+
+<body>
+
+<h2>ACCESS REQUIRED</h2>
+
+<input id="code" placeholder="Enter Code">
+<button onclick="check()">ENTER</button>
+
+<script>
+function check(){
+  let c = document.getElementById("code").value;
+  
+  if(c === "0312"){
+    window.location.href = "system.html";
+  }else{
+    alert("ACCESS DENIED");
+  }
+}
+</script>
+
+<!-- 提示藏这里：生日 -->
+</body>
+</html>
