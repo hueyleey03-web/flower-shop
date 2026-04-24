@@ -1,1 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SYSTEM</title>
 
+<style>
+body{
+  margin:0;
+  background:#A9E2EB;
+  color:#0A0214;
+  font-family:monospace;
+}
+
+/* 三栏布局 */
+.container{
+  display:flex;
+  height:100vh;
+}
+
+/* 左边（数据） */
+.left{
+  width:25%;
+  padding:20px;
+  border-right:2px solid #0A0214;
+}
+
+/* 中间（终端） */
+.middle{
+  width:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* 右边（文件） */
+.right{
+  width:25%;
+  padding:20px;
+  border-left:2px solid #0A0214;
+}
+
+/* 终端 */
+#terminal{
+  background:black;
+  color:#00ffcc;
+  padding:20px;
+  width:90%;
+  height:80%;
+  overflow-y:auto;
+  border:1px solid #00ffcc;
+}
+
+#cmd{
+  width:100%;
+  background:black;
+  color:#00ffcc;
+  border:none;
+  outline:none;
+  margin-top:10px;
+}
+
+/* 文件样式 */
+a{
+  display:block;
+  margin:10px 0;
+  color:#141404;
+  text-decoration:none;
+}
+
+a:hover{
+  text-decoration:underline;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- 🌸 左：花店数据 -->
+  <div class="left">
+    <h3>STORE DATA</h3>
+    <p>Revenue: RM 2,450</p>
+    <p>Rating: ★★★★☆</p>
+    <p>Reviews: 128</p>
+    <p>Status: Stable</p>
+  </div>
+
+  <!-- 💻 中：终端 -->
+  <div class="middle">
+    <div id="terminal">
+      <div id="output">
+        <p>> booting flower_sys...</p>
+        <p>> loading data...</p>
+        <p>> welcome back, owner</p>
+      </div>
+      <input id="cmd" placeholder="type command..." onkeydown="run(event)">
+    </div>
+  </div>
+
+  <!-- 📁 右：文件 -->
+  <div class="right">
+    <h3>FILES</h3>
+    <a href="file1.html">customer_data.txt</a>
+    <a href="file2.html">flower_log.txt</a>
+    <a href="secret.html">???</a>
+  </div>
+
+</div>
+
+<script>
+function run(e){
+  if(e.key === "Enter"){
+    let input = document.getElementById("cmd").value;
+    let output = document.getElementById("output");
+
+    output.innerHTML += "<p>> " + input + "</p>";
+
+    if(input === "help"){
+      output.innerHTML += "<p>commands: help, status, open log, clear</p>";
+    }
+
+    else if(input === "status"){
+      output.innerHTML += "<p>system stable</p>";
+    }
+
+    else if(input === "open log"){
+      output.innerHTML += "<p>opening flower_log.txt...</p>";
+      setTimeout(()=>{
+        window.location.href = "file2.html";
+      },1000);
+    }
+
+    else if(input === "open customer"){
+      output.innerHTML += "<p>opening customer_data.txt...</p>";
+      setTimeout(()=>{
+        window.location.href = "file1.html";
+      },1000);
+    }
+
+    else if(input === "unlock"){
+      output.innerHTML += "<p>hidden file unlocked...</p>";
+      setTimeout(()=>{
+        window.location.href = "secret.html";
+      },1000);
+    }
+
+    else if(input === "clear"){
+      output.innerHTML = "";
+    }
+
+    else{
+      output.innerHTML += "<p>unknown command</p>";
+    }
+
+    document.getElementById("cmd").value = "";
+    output.scrollTop = output.scrollHeight;
+  }
+}
+</script>
+
+</body>
+</html>
