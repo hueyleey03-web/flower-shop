@@ -22,6 +22,7 @@ body{
   width:25%;
   padding:20px;
   border-right:2px solid #0A0214;
+  overflow-right:auto;
   font-family: "Noto Serif SC", serif;
   font-size:16px;
 }
@@ -39,6 +40,8 @@ body{
   width:25%;
   padding:20px;
   border-left:2px solid #0A0214;
+  width:100%;
+  word-wrap:break-word;
 }
 
 /* 终端 */
@@ -78,23 +81,22 @@ h1{
 }
   /* 整个评论框 */
 .review{
+  display:flex
+  align-items:flex-start
   border:1px solid #0A0214;
   padding:10px;
   margin-bottom:15px;
   background:#ffffff55; /* 半透明 */
-}
-
-/* 上方头像 + 用户名 */
-.top{
-  display:flex;
-  align-items:center;
+  max-width:100%
+  box-sizing:border-box;
 }
 
 /* 头像 */
 .avatar{
-  width:30px;
-  height:30px;
-  margin-right:8px;
+  width:40px;
+  height:40px;
+  margin-right:10px;
+  flex-shrink:0;
 }
 
 /* 用户名 */
@@ -111,7 +113,7 @@ h1{
 
 /* 评论内容 */
 .content{
-  margin-top:8px;
+  margin-top:5px;
 }
 </style>
 
