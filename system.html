@@ -23,6 +23,7 @@ body{
   padding:20px;
   border-right:2px solid #0A0214;
   overflow-y:auto;
+  overflow-x:hidden;
   font-family: "Noto Serif SC", serif;
   font-size:16px;
 }
@@ -86,6 +87,7 @@ h1{
   margin-bottom:15px;
   background:#ffffff55; /* 半透明 */
   max-width:100%;
+  word-break:break-word;
   box-sizing:border-box;
 }
 
@@ -123,14 +125,6 @@ h1{
 
   <!-- 🌸 左：花店数据 -->
 <div class="left">
-    <h1>有间花店</h1>
-    <p>成交额: 2,450</p>
-    <p>退款额: 570</p>
-    <p>评分: ★★★★☆</p>
-    <p>Reviews: 128</p>
-    <!-- 评语 -->
-  <div class="review">
-  <div class="left">
 
   <h1>有间花店</h1>
 
@@ -138,12 +132,12 @@ h1{
   <p>退款额: 570</p>
   <p>评分: ★★★★☆</p>
   <p>Reviews: 128</p>
-
   <p>Status: Stable</p>
 
   <h3>REVIEWS</h3>
 
-  <!-- 评语1 -->
+  <!-- 评论1 -->
+  <div class="review">
     <img src="avatar2.png" class="avatar">
 
     <div class="review-text">
@@ -153,7 +147,7 @@ h1{
     </div>
   </div>
 
-  <!-- 评语2 -->
+  <!-- 评论2 -->
   <div class="review">
     <img src="avatar3.png" class="avatar">
 
@@ -165,9 +159,7 @@ h1{
   </div>
 
 </div>
-
-   
-
+ 
   <!-- 💻 中：终端 -->
   <div class="middle">
     <div id="terminal">
