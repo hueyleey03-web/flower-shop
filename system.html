@@ -22,7 +22,7 @@ body{
   width:25%;
   padding:20px;
   border-right:2px solid #0A0214;
-  overflow-right:auto;
+  overflow-y:auto;
   font-family: "Noto Serif SC", serif;
   font-size:16px;
 }
@@ -40,8 +40,6 @@ body{
   width:25%;
   padding:20px;
   border-left:2px solid #0A0214;
-  width:100%;
-  word-wrap:break-word;
 }
 
 /* 终端 */
@@ -81,13 +79,13 @@ h1{
 }
   /* 整个评论框 */
 .review{
-  display:flex
-  align-items:flex-start
+  display:flex;
+  align-items:flex-start;
   border:1px solid #0A0214;
   padding:10px;
   margin-bottom:15px;
   background:#ffffff55; /* 半透明 */
-  max-width:100%
+  max-width:100%;
   box-sizing:border-box;
 }
 
@@ -124,33 +122,51 @@ h1{
 <div class="container">
 
   <!-- 🌸 左：花店数据 -->
-  <div class="left">
+<div class="left">
     <h1>有间花店</h1>
     <p>成交额: 2,450</p>
     <p>退款额: 570</p>
     <p>评分: ★★★★☆</p>
     <p>Reviews: 128</p>
-    <p>Status: Stable</p>
-  </div>
-
-   <!-- 评语 -->
+    <!-- 评语 -->
   <div class="review">
-  <div class="top">
+  <div class="left">
+
+  <h1>有间花店</h1>
+
+  <p>成交额: 2,450</p>
+  <p>退款额: 570</p>
+  <p>评分: ★★★★☆</p>
+  <p>Reviews: 128</p>
+
+  <p>Status: Stable</p>
+
+  <h3>REVIEWS</h3>
+
+  <!-- 评语1 -->
     <img src="avatar2.png" class="avatar">
-    <span class="username">flower_girl</span>
+
+    <div class="review-text">
+      <div class="username">flower_girl</div>
+      <div class="time">2026-04-23 09:12</div>
+      <div class="content">包装很精致，很喜欢 🌸</div>
+    </div>
   </div>
-  <div class="time">2026-04-23 09:12</div>
-  <div class="content">包装很精致，很喜欢 🌸</div>
+
+  <!-- 评语2 -->
+  <div class="review">
+    <img src="avatar3.png" class="avatar">
+
+    <div class="review-text">
+      <div class="username">client88</div>
+      <div class="time">2026-04-22 18:45</div>
+      <div class="content">第二次回购了，服务很好。</div>
+    </div>
+  </div>
+
 </div>
 
-<div class="review">
-  <div class="top">
-    <img src="avatar3.png" class="avatar">
-    <span class="username">client88</span>
-  </div>
-  <div class="time">2026-04-22 18:45</div>
-  <div class="content">第二次回购了，服务很好。</div>
-</div>
+   
 
   <!-- 💻 中：终端 -->
   <div class="middle">
