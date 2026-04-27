@@ -319,12 +319,12 @@ h1{
 
       <div id="hiddenContent" style="display:none;">
 
-        <div class="bad-review">
+        <div class="bad-review hidden-search"">
           <p><b>user_771</b></p>
           <p>花有奇怪的味道，不太舒服。</p>
         </div>
 
-        <div class="bad-review">
+        <div class="bad-review hidden-search">
           <p><b>匿名用户</b></p>
           <p>买回去第二天就枯了。</p>
         </div>
@@ -343,5 +343,39 @@ function toggleHidden(){
   box.style.display = box.style.display === "none" ? "block" : "none";
 }
 </script>
+
+<script>
+function searchAll(){
+  let input = document.getElementById("search").value.toLowerCase();
+
+  let logs = document.querySelectorAll(".log");
+  let files = document.querySelectorAll(".files a");
+  let hidden = document.querySelectorAll(".hidden-search");
+
+  // 正常内容
+  logs.forEach(el=>{
+    let text = el.innerText.toLowerCase();
+    el.style.display = text.includes(input) ? "block" : "none";
+  });
+
+  files.forEach(el=>{
+    let text = el.innerText.toLowerCase();
+    el.style.display = text.includes(input) ? "block" : "none";
+  });
+
+  // ⭐ 隐藏评论逻辑（重点）
+  hidden.forEach(el=>{
+    let text = el.innerText.toLowerCase();
+
+    if(input && text.includes(input)){
+      document.getElementById("hiddenContent").style.display = "block";
+      el.style.display = "block";
+    }else{
+      el.style.display = "none";
+    }
+  });
+}
+</script>
+  
 </body>
 </html>
