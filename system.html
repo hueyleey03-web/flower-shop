@@ -36,6 +36,25 @@ body{
   max-height:100vh;
   background:#F5F0E6;
 }
+  /* Chrome / Edge */
+.left::-webkit-scrollbar {
+  width: 6px;
+}
+
+.left::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.left::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+
+/* Firefox */
+.left {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.2) transparent;
+}
 
 /* 中间（终端） */
 .middle{
