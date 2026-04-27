@@ -58,13 +58,13 @@ body{
 
 /* 中间（终端） */
 .middle{
-  width:50%;
+  width:75%;
   display:flex;
   justify-content:center;
   align-items:center;
 }
 .panel{
- width:90%;
+  width:90%;
   height:85%;
   background:#ffffffcc;
   border-radius:15px;
@@ -72,7 +72,36 @@ body{
   box-shadow:0 4px 20px rgba(0,0,0,0.1);
   position:relative;
   overflow-y:auto;
+  display:flex;
+  gap:20px;
 }
+
+.panel-left{
+  width:65%;
+}
+
+.panel-right{
+  width:35%;
+  border-left:1px solid #ddd;
+  padding-left:10px;
+}
+
+ /* 隐藏评论 */ 
+.hidden-title{
+  cursor:pointer;
+  background:#eee;
+  padding:8px;
+  border-radius:6px;
+}
+
+.bad-review{
+  background:#fff0f0;
+  border-left:4px solid #c94f4f;
+  padding:8px;
+  margin-top:8px;
+  border-radius:6px;
+}
+  
 /* 搜索框 */
 .search-bar{
   position:sticky;
@@ -238,43 +267,70 @@ h1{
 
   <div class="panel">
 
-    <!-- 🔍 搜索 -->
-    <div class="search-bar">
-      <input id="search" placeholder="search logs..." onkeyup="searchAll()">
+    <!-- 左：日志 + 文件 -->
+    <div class="panel-left">
+
+      <!-- 🔍 搜索 -->
+      <div class="search-bar">
+        <input id="search" placeholder="search logs..." onkeyup="searchAll()">
+      </div>
+
+      <!-- 📝 日志区 -->
+      <div id="logs">
+
+        <div class="log">
+          <p>2026-04-25</p>
+          <p>今日玫瑰边缘出现轻微枯萎。</p>
+        </div>
+
+        <div class="log">
+          <p>2026-04-24</p>
+          <p>百合气味比平时更浓。</p>
+        </div>
+
+        <div class="log">
+          <p>2026-04-23</p>
+          <p>库存正常。</p>
+        </div>
+
+        <div class="log secret">
+          <p>2026-04-22</p>
+          <p>不要再卖那批花。</p>
+        </div>
+
+      </div>
+
+      <!-- 📁 文件区 -->
+      <div class="files">
+        <h3>FILES</h3>
+        <a href="file1.html">customer_data.txt</a>
+        <a href="file2.html">flower_log.txt</a>
+        <a href="secret.html">???</a>
+      </div>
+
     </div>
 
-    <!-- 📝 日志区 -->
-    <div id="logs">
+    <!-- 右：隐藏评论 -->
+    <div class="panel-right">
 
-      <div class="log">
-        <p>2026-04-25</p>
-        <p>今日玫瑰边缘出现轻微枯萎。</p>
+      <div class="hidden-title" onclick="toggleHidden()">
+        ▶ 隐藏评论
       </div>
 
-      <div class="log">
-        <p>2026-04-24</p>
-        <p>百合气味比平时更浓。</p>
+      <div id="hiddenContent" style="display:none;">
+
+        <div class="bad-review">
+          <p><b>user_771</b></p>
+          <p>花有奇怪的味道，不太舒服。</p>
+        </div>
+
+        <div class="bad-review">
+          <p><b>匿名用户</b></p>
+          <p>买回去第二天就枯了。</p>
+        </div>
+
       </div>
 
-      <div class="log">
-        <p>2026-04-23</p>
-        <p>库存正常。</p>
-      </div>
-
-      <!-- 🔴 异常记录（剧情点） -->
-      <div class="log secret">
-        <p>2026-04-22</p>
-        <p>不要再卖那批花。</p>
-      </div>
-
-    </div>
-
-    <!-- 📁 文件区 -->
-    <div class="files">
-      <h3>FILES</h3>
-      <a href="file1.html">customer_data.txt</a>
-      <a href="file2.html">flower_log.txt</a>
-      <a href="secret.html">???</a>
     </div>
 
   </div>
@@ -282,15 +338,10 @@ h1{
 </div>
 
 <script>
-function searchAll(){
-  let input = document.getElementById("search").value.toLowerCase();
-
-  document.querySelectorAll(".log, .files a").forEach(el=>{
-    let text = el.innerText.toLowerCase();
-    el.style.display = text.includes(input) ? "block" : "none";
-  });
+function toggleHidden(){
+  let box = document.getElementById("hiddenContent");
+  box.style.display = box.style.display === "none" ? "block" : "none";
 }
 </script>
-
 </body>
 </html>
