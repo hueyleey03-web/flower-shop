@@ -34,7 +34,7 @@ body{
   font-size:16px;
   overflow-y:auto;
   max-height:100vh;
-  background:#F5F0E6;
+  background:#E6C3DA;
 }
   /* Chrome / Edge */
 .left::-webkit-scrollbar {
@@ -64,8 +64,8 @@ body{
   align-items:center;
 }
 .panel{
-  width:90%;
-  height:80%;
+ width:90%;
+  height:85%;
   background:#ffffffcc;
   border-radius:15px;
   padding:20px;
@@ -75,59 +75,44 @@ body{
 }
 /* 搜索框 */
 .search-bar{
-  position:absolute;
-  top:15px;
-  right:20px;
+  position:sticky;
+  top:0;
+  background:#ffffffcc;
+  padding-bottom:10px;
 }
 
 .search-bar input{
-  padding:6px 10px;
+  width:100%;
+  padding:8px;
   border-radius:8px;
   border:1px solid #ccc;
 }
 
-/* 卡片 */
-.card{
+/* 日志 */
+.log{
   background:#f9f9f9;
-  padding:12px;
-  border-radius:10px;
-  margin-top:15px;
-  transition:0.2s;
+  padding:10px;
+  margin-top:10px;
+  border-radius:8px;
+  border-left:4px solid #A0BA79;
 }
 
-.card:hover{
-  background:#f0f0f0;
-}
-  
-/* 右边（文件） */
-.right{
-  width:25%;
-  padding:20px;
-  border-left:2px solid #0A0214;
-  font-family: "Noto Serif SC", serif;
-  font-size:16px;
+/* 🔴 异常日志 */
+.secret{
+  border-left:4px solid #c94f4f;
+  color:#a33;
 }
 
-/* 📁 右边文件区按钮化 */
-.right a{
-  padding:8px 10px;
-  border-radius:6px;
-  transition:0.2s;
+/* 文件区 */
+.files{
+  margin-top:20px;
+  padding-top:10px;
+  border-top:1px solid #ddd;
 }
 
-.right a:hover{
-  background:#e0e0e0;
-}
-
-/* 终端 */
-#terminal{
-  background:black;
-  color:#00ffcc;
-  padding:20px;
-  width:90%;
-  height:80%;
-  overflow-y:auto;
-  border:1px solid #00ffcc;
+.files a{
+  display:block;
+  margin-top:8px;
 }
 
 #cmd{
@@ -247,41 +232,49 @@ h1{
 
 </div>
  
-  <!-- 💻 中：终端 -->
- <div class="middle">
+  <!-- 💻 中和右-->
+
+  <div class="middle">
 
   <div class="panel">
 
     <!-- 🔍 搜索 -->
     <div class="search-bar">
-      <input id="search" placeholder="search flower..." onkeyup="searchFlower()">
+      <input id="search" placeholder="search logs..." onkeyup="searchAll()">
     </div>
 
-    <!-- ⏳ 系统加载 -->
-    <div id="boot">
-      <p id="line1">> booting flower_sys...</p>
-      <p id="line2" style="display:none;">> loading flower database...</p>
-      <p id="line3" style="display:none;">> welcome back, owner</p>
+    <!-- 📝 日志区 -->
+    <div id="logs">
+
+      <div class="log">
+        <p>2026-04-25</p>
+        <p>今日玫瑰边缘出现轻微枯萎。</p>
+      </div>
+
+      <div class="log">
+        <p>2026-04-24</p>
+        <p>百合气味比平时更浓。</p>
+      </div>
+
+      <div class="log">
+        <p>2026-04-23</p>
+        <p>库存正常。</p>
+      </div>
+
+      <!-- 🔴 异常记录（剧情点） -->
+      <div class="log secret">
+        <p>2026-04-22</p>
+        <p>不要再卖那批花。</p>
+      </div>
+
     </div>
 
-    <!-- 🌸 花资料 -->
-    <div id="flowerData" style="display:none;">
-      
-      <div class="card">
-        <h3>Rose</h3>
-        <p>花语：爱情、热情</p>
-      </div>
-
-      <div class="card">
-        <h3>Lily</h3>
-        <p>花语：纯洁、祝福</p>
-      </div>
-
-      <div class="card">
-        <h3>Tulip</h3>
-        <p>花语：告白、温柔</p>
-      </div>
-
+    <!-- 📁 文件区 -->
+    <div class="files">
+      <h3>FILES</h3>
+      <a href="file1.html">customer_data.txt</a>
+      <a href="file2.html">flower_log.txt</a>
+      <a href="secret.html">???</a>
     </div>
 
   </div>
@@ -289,90 +282,13 @@ h1{
 </div>
 
 <script>
-setTimeout(()=>{
-  document.getElementById("line2").style.display="block";
-},1000);
-
-setTimeout(()=>{
-  document.getElementById("line3").style.display="block";
-},2000);
-
-setTimeout(()=>{
-  document.getElementById("boot").style.display="none";
-  document.getElementById("flowerData").style.display="block";
-},3000);
-</script>
-
-<script>
-function searchFlower(){
+function searchAll(){
   let input = document.getElementById("search").value.toLowerCase();
-  let cards = document.querySelectorAll(".card");
 
-  cards.forEach(card=>{
-    let text = card.innerText.toLowerCase();
-    card.style.display = text.includes(input) ? "block" : "none";
+  document.querySelectorAll(".log, .files a").forEach(el=>{
+    let text = el.innerText.toLowerCase();
+    el.style.display = text.includes(input) ? "block" : "none";
   });
-}
-</script>
-
-  <!-- 📁 右：文件 -->
-  <div class="right">
-    <h3>文件夹</h3>
-    <a href="file1.html">customer_data.txt</a>
-    <a href="file2.html">flower_log.txt</a>
-    <a href="secret.html">???</a>
-  </div>
-
-</div>
-
-<script>
-function run(e){
-  if(e.key === "Enter"){
-    let input = document.getElementById("cmd").value;
-    let output = document.getElementById("output");
-
-    output.innerHTML += "<p>> " + input + "</p>";
-
-    if(input === "help"){
-      output.innerHTML += "<p>commands: help, status, open log, clear</p>";
-    }
-
-    else if(input === "status"){
-      output.innerHTML += "<p>system stable</p>";
-    }
-
-    else if(input === "open log"){
-      output.innerHTML += "<p>opening flower_log.txt...</p>";
-      setTimeout(()=>{
-        window.location.href = "file2.html";
-      },1000);
-    }
-
-    else if(input === "open customer"){
-      output.innerHTML += "<p>opening customer_data.txt...</p>";
-      setTimeout(()=>{
-        window.location.href = "file1.html";
-      },1000);
-    }
-
-    else if(input === "unlock"){
-      output.innerHTML += "<p>hidden file unlocked...</p>";
-      setTimeout(()=>{
-        window.location.href = "secret.html";
-      },1000);
-    }
-
-    else if(input === "clear"){
-      output.innerHTML = "";
-    }
-
-    else{
-      output.innerHTML += "<p>unknown command</p>";
-    }
-
-    document.getElementById("cmd").value = "";
-    output.scrollTop = output.scrollHeight;
-  }
 }
 </script>
 
