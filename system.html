@@ -63,7 +63,42 @@ body{
   justify-content:center;
   align-items:center;
 }
+.panel{
+  width:90%;
+  height:80%;
+  background:#ffffffcc;
+  border-radius:15px;
+  padding:20px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.1);
+  position:relative;
+  overflow-y:auto;
+}
+/* 搜索框 */
+.search-bar{
+  position:absolute;
+  top:15px;
+  right:20px;
+}
 
+.search-bar input{
+  padding:6px 10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+/* 卡片 */
+.card{
+  background:#f9f9f9;
+  padding:12px;
+  border-radius:10px;
+  margin-top:15px;
+  transition:0.2s;
+}
+
+.card:hover{
+  background:#f0f0f0;
+}
+  
 /* 右边（文件） */
 .right{
   width:25%;
@@ -213,16 +248,72 @@ h1{
 </div>
  
   <!-- 💻 中：终端 -->
-  <div class="middle">
-    <div id="terminal">
-      <div id="output">
-        <p>> booting flower_sys...</p>
-        <p>> loading data...</p>
-        <p>> welcome back, owner</p>
-      </div>
-      <input id="cmd" placeholder="type command..." onkeydown="run(event)">
+ <div class="middle">
+
+  <div class="panel">
+
+    <!-- 🔍 搜索 -->
+    <div class="search-bar">
+      <input id="search" placeholder="search flower..." onkeyup="searchFlower()">
     </div>
+
+    <!-- ⏳ 系统加载 -->
+    <div id="boot">
+      <p id="line1">> booting flower_sys...</p>
+      <p id="line2" style="display:none;">> loading flower database...</p>
+      <p id="line3" style="display:none;">> welcome back, owner</p>
+    </div>
+
+    <!-- 🌸 花资料 -->
+    <div id="flowerData" style="display:none;">
+      
+      <div class="card">
+        <h3>Rose</h3>
+        <p>花语：爱情、热情</p>
+      </div>
+
+      <div class="card">
+        <h3>Lily</h3>
+        <p>花语：纯洁、祝福</p>
+      </div>
+
+      <div class="card">
+        <h3>Tulip</h3>
+        <p>花语：告白、温柔</p>
+      </div>
+
+    </div>
+
   </div>
+
+</div>
+
+<script>
+setTimeout(()=>{
+  document.getElementById("line2").style.display="block";
+},1000);
+
+setTimeout(()=>{
+  document.getElementById("line3").style.display="block";
+},2000);
+
+setTimeout(()=>{
+  document.getElementById("boot").style.display="none";
+  document.getElementById("flowerData").style.display="block";
+},3000);
+</script>
+
+<script>
+function searchFlower(){
+  let input = document.getElementById("search").value.toLowerCase();
+  let cards = document.querySelectorAll(".card");
+
+  cards.forEach(card=>{
+    let text = card.innerText.toLowerCase();
+    card.style.display = text.includes(input) ? "block" : "none";
+  });
+}
+</script>
 
   <!-- 📁 右：文件 -->
   <div class="right">
